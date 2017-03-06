@@ -12,59 +12,60 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "character", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer "game_id"
-    t.integer "user_id"
-    t.string  "name",    limit: 45
-  end
-
-  create_table "character_character", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "character_characters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "character_src_id"
     t.integer "character_dest_id"
     t.text    "description",       limit: 4294967295
   end
 
-  create_table "character_section", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "character_sections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "section_id"
     t.integer "character_id"
     t.text    "value",        limit: 4294967295
   end
 
-  create_table "character_skill", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "character_skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "character_id"
     t.integer "rule_id"
     t.string  "value",        limit: 1024
   end
 
-  create_table "game", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "characters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "game_id"
+    t.integer "user_id"
+    t.string  "name",    limit: 45
+  end
+
+  create_table "games", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name",                null: false
     t.float    "cost",     limit: 24
     t.datetime "date"
     t.string   "template"
   end
 
-  create_table "rule", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "rules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "game_id"
     t.string  "name"
     t.text    "description", limit: 16777215
   end
 
-  create_table "section", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "sections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "game_id"
     t.string  "section_type", limit: 45
     t.string  "section_name", limit: 45
   end
 
-  create_table "skill", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name",        limit: 45
     t.text   "description", limit: 4294967295
   end
 
-  create_table "user", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "name",       limit: 1024
-    t.string "first_name", limit: 1024
-    t.string "last_name",  limit: 1024
-    t.string "email",      limit: 1024
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string  "name",       limit: 1024
+    t.string  "first_name", limit: 1024
+    t.string  "last_name",  limit: 1024
+    t.string  "email",      limit: 1024
+    t.integer "admin",      limit: 1,    default: 0
   end
 
 end

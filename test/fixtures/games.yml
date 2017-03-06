@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cost: 1.5
+  date: 2017-03-06 08:06:01
+  template: MyString
+
+two:
+  name: MyString
+  cost: 1.5
+  date: 2017-03-06 08:06:01
+  template: MyString

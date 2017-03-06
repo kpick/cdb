@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  character_src: one
+  character_dest: one
+  description: MyText
+
+two:
+  character_src: two
+  character_dest: two
+  description: MyText
