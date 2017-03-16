@@ -1,4 +1,4 @@
-class SkillsController < ApplicationController
+class SkillsController < AdminsController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
 
   # GET /skills

@@ -1,4 +1,4 @@
-class CharacterSkillsController < ApplicationController
+class CharacterSkillsController < AdminsController
   before_action :set_character_skill, only: [:show, :edit, :update, :destroy]
 
   # GET /character_skills

@@ -1,4 +1,4 @@
-class CharacterSectionsController < ApplicationController
+class CharacterSectionsController < AdminsController
   before_action :set_character_section, only: [:show, :edit, :update, :destroy]
 
   # GET /character_sections

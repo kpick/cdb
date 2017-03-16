@@ -1,4 +1,4 @@
-class CharacterCharactersController < ApplicationController
+class CharacterCharactersController < AdminsController
   before_action :set_character_character, only: [:show, :edit, :update, :destroy]
 
   # GET /character_characters

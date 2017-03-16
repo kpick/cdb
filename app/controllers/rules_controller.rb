@@ -1,4 +1,4 @@
-class RulesController < ApplicationController
+class RulesController < AdminsController
   before_action :set_rule, only: [:show, :edit, :update, :destroy]
 
   # GET /rules

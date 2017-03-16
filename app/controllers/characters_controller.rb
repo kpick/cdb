@@ -1,4 +1,4 @@
-class CharactersController < ApplicationController
+class CharactersController < AdminsController
   before_action :set_character, only: [:show, :edit, :update, :destroy]
 
   # GET /characters
@@ -14,16 +14,22 @@ class CharactersController < ApplicationController
 
   # GET /characters/new
   def new
+    ensure_admin!
     @character = Character.new
   end
 
   # GET /characters/1/edit
   def edit
+    ensure_admin!
   end
 
   # POST /characters
   # POST /characters.json
   def create
+    if ensure_admin!
+      return
+    end
+    
     @character = Character.new(character_params)
 
     respond_to do |format|
@@ -40,6 +46,11 @@ class CharactersController < ApplicationController
   # PATCH/PUT /characters/1
   # PATCH/PUT /characters/1.json
   def update
+    if ensure_admin!
+      return
+    end
+    
+
     respond_to do |format|
       if @character.update(character_params)
         format.html { redirect_to @character, notice: 'Character was successfully updated.' }
@@ -54,6 +65,10 @@ class CharactersController < ApplicationController
   # DELETE /characters/1
   # DELETE /characters/1.json
   def destroy
+    if ensure_admin!
+      return
+    end
+
     @character.destroy
     respond_to do |format|
       format.html { redirect_to characters_url, notice: 'Character was successfully destroyed.' }
