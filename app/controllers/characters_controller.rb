@@ -10,6 +10,7 @@ class CharactersController < AdminsController
   # GET /characters/1
   # GET /characters/1.json
   def show
+    owns_character!
   end
 
   # GET /characters/new
@@ -26,7 +27,7 @@ class CharactersController < AdminsController
   # POST /characters
   # POST /characters.json
   def create
-    if ensure_admin!
+    if ! ensure_admin!
       return
     end
     
@@ -46,7 +47,7 @@ class CharactersController < AdminsController
   # PATCH/PUT /characters/1
   # PATCH/PUT /characters/1.json
   def update
-    if ensure_admin!
+    if ! ensure_admin!
       return
     end
     
@@ -85,5 +86,16 @@ class CharactersController < AdminsController
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_params
       params.require(:character).permit(:game_id, :user_id, :name)
+    end
+
+    def owns_character!
+      charId = @character.user_id
+      userId = current_user.id
+      if charId == userId
+        return true
+      else
+        sign_out current_user
+        return redirect_to "/"
+      end
     end
 end

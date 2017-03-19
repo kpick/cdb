@@ -2,17 +2,22 @@
 
 <p>
   <strong>Game:</strong>
-  <%= @section.game %>
-</p>
-
-<p>
-  <strong>Section type:</strong>
-  <%= @section.section_type %>
+  <%= @section.game_id %>
 </p>
 
 <p>
   <strong>Section name:</strong>
   <%= @section.section_name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @section.value %>
+</p>
+
+<p>
+  <strong>Field:</strong>
+  <%= @section.field_id %>
 </p>
 
 <%= link_to 'Edit', edit_section_path(@section) %> |

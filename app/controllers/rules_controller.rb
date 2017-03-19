@@ -14,16 +14,22 @@ class RulesController < AdminsController
 
   # GET /rules/new
   def new
+    ensure_admin!
     @rule = Rule.new
   end
 
   # GET /rules/1/edit
   def edit
+    ensure_admin!
   end
 
   # POST /rules
   # POST /rules.json
   def create
+    if ensure_admin!
+      return
+    end
+
     @rule = Rule.new(rule_params)
 
     respond_to do |format|
@@ -40,6 +46,9 @@ class RulesController < AdminsController
   # PATCH/PUT /rules/1
   # PATCH/PUT /rules/1.json
   def update
+    if ensure_admin!
+      return
+    end
     respond_to do |format|
       if @rule.update(rule_params)
         format.html { redirect_to @rule, notice: 'Rule was successfully updated.' }
@@ -54,6 +63,9 @@ class RulesController < AdminsController
   # DELETE /rules/1
   # DELETE /rules/1.json
   def destroy
+    if ensure_admin!
+      return
+    end
     @rule.destroy
     respond_to do |format|
       format.html { redirect_to rules_url, notice: 'Rule was successfully destroyed.' }

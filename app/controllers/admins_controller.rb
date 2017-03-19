@@ -5,11 +5,11 @@ class AdminsController < ApplicationController
   private
 
   def ensure_admin!
-    if current_user.admin?
-    	return true
-    else
-    	sign_out current_user
-      	return redirect_to "/"
-	end
+      if current_user.admin?
+        return true
+      else
+        sign_out current_user
+        return redirect_to "/"
+      end
   end
 end

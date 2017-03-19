@@ -1,4 +1,4 @@
-class SectionsController < AdminsController
+class SectionsController < ApplicationController
   before_action :set_section, only: [:show, :edit, :update, :destroy]
 
   # GET /sections
@@ -69,6 +69,6 @@ class SectionsController < AdminsController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def section_params
-      params.require(:section).permit(:game_id, :section_type, :section_name)
+      params.require(:section).permit(:game_id, :section_name, :value, :field_id)
     end
 end
