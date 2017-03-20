@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :field_type %>
-    <%= f.text_field :field_type %>
+    <%= f.select :field_type, Field.field_types.keys %>
   </div>
 
   <div class="actions">
